@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ANS Computer Vision Demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2>Host Information</h2>
+              <h4 id="hostinfo">servername</h4>
+              <div id="hostname"></div>
+              <div id="osname"></div>
+              <div id="osplatform"></div>
+              <div id="osrelease"></div>
+              <div id="osuptime"></div>
+              <div id="cpuarch"></div>
+              <div id="cpuload1"></div>
+              <div id="cpuload5"></div>
+              <div id="cpuload15"></div>
+              <div id="memtotal"></div>
+              <div id="memfree"></div>
+            </div>
+            <button class="btn btn-lg highcpu-btn btn-danger" type="button">Kill CPU</button>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="javascripts/refresh.js"></script>
+  <script src="javascripts/host.js"></script>
+  <script src="javascripts/load.js"></script>
+</body>
+</html>
