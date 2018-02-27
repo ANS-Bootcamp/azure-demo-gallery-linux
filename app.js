@@ -7,7 +7,6 @@ var multiparty = require('multiparty');
 var uuidv1 = require('uuid/v1');
 var os = require('os');
 var shouldRun = true;
-var EventLogger = require('node-windows').EventLogger;
 var httpStatus = 200;
 
 
