@@ -20,7 +20,7 @@ app.get('/host', function(req, res){
     res.sendFile(path.join(__dirname, 'views/host.html'));
   });
 
-app.get('/health', function(req, res){
+  app.get('/health.html', function(req, res){
     res.sendStatus(httpStatus)
 });
 
