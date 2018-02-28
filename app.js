@@ -23,7 +23,7 @@ app.get('/health.html', function(req, res){
     if(process.env.STATUS == 200){
         res.status(200).send('200 - HEALTHY');
     }else{
-        res.status(200).send('500 - SERVER ERROR');
+        res.status(500).send('500 - SERVER ERROR');
     } 
 });
 
