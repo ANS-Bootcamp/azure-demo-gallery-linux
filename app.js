@@ -37,6 +37,25 @@ app.get('/500', function (req, res) {
     res.status(200).send('500');
 });
 
+app.get('/cpu', function(req, res){
+    if(process.env.CPU == 'true'){
+        res.status(200).send('true');
+    }else{
+        res.status(200).send('false');
+    } 
+});
+
+app.get('/cpuhigh', function (req, res) {
+    process.env.CPU = 'true';
+    process.env.STATUS = 500;
+    res.status(200).send('true');
+});
+
+app.get('/cpulow', function (req, res) {
+    process.env.CPU = 'false';
+    res.status(200).send('false');
+});
+
 app.get('/data', function (req, res) {
 
   //Create connection to azure tableservice
@@ -69,7 +88,8 @@ app.get('/data', function (req, res) {
             "cpus" : os.cpus(),
             "memtotal" : os.totalmem(),
             "memfree" : os.freemem(),
-            "health" : process.env.STATUS
+            "health" : process.env.STATUS,
+            "cpu" : process.env.CPU
         };
 
             if(result.entries.length > 0){
@@ -97,26 +117,6 @@ app.get('/data', function (req, res) {
      }
   });
 });
-
-
-
-app.get('/kill', function (req, res) {
-    var cpu = {"CPU" : "High"};
-    res.send({cpu});
-    blockCpuFor(300000); //Load CPU 5 for minutes
-});
-
-//CPU Load Functions Code
-function blockCpuFor(ms) {
-    var shouldRun = true;
-	var now = new Date().getTime();
-	var result = 0
-	while(shouldRun) {
-		result += Math.random() * Math.random();
-		if (new Date().getTime() > now +ms)
-			return;
-	}	
-}
 
 
 module.exports = app;

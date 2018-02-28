@@ -20,6 +20,10 @@ var svc = new Service({
     {
       name: "STATUS",
       value: process.env.STATUS
+    },
+    {
+      name: "CPU",
+      value: process.env.CPU
     }
   ]
 });

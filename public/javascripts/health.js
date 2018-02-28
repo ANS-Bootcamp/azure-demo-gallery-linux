@@ -21,7 +21,18 @@ $('.health500-btn').on('click', function (){
 });
 
 $('.highcpu-btn').on('click', function (){
-  fetch('/kill')
+  fetch('/cpuhigh')
+  .then((resp) => resp.json())
+  .then(function(data) {
+    location.reload();
+  })
+  .catch(function(error) {
+    console.log(JSON.stringify(error));
+  }); 
+});
+
+$('.lowcpu-btn').on('click', function (){
+  fetch('/cpulow')
   .then((resp) => resp.json())
   .then(function(data) {
     location.reload();
