@@ -4,7 +4,7 @@ var Service = require('node-linux').Service;
 var svc = new Service({
     name:'AzureDemoGallery',
     description: 'Node.JS Azure Demo Gallery.',
-    script: '/ans/azure-demo-gallery-master/bin/www'
+    script: '/ans/azure-demo-gallery-linux-master/bin/www'
 });
 
 // Listen for the "install" event, which indicates the 
