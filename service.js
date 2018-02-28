@@ -4,7 +4,24 @@ var Service = require('node-linux').Service;
 var svc = new Service({
     name:'AzureDemoGallery',
     description: 'Node.JS Azure Demo Gallery.',
-    script: '/ans/azure-demo-gallery-linux-master/bin/www'
+    script: '/ans/azure-demo-gallery-linux-master/bin/www',
+    env: [{
+      name: "AZURE_STORAGE_ACCOUNT",
+      value: process.env.AZURE_STORAGE_ACCOUNT
+    },
+    {
+      name: "AZURE_STORAGE_ACCESS_KEY",
+      value: process.env.AZURE_STORAGE_ACCESS_KEY
+    },
+    {
+      name: "PORT",
+      value: process.env.PORT
+    },
+    {
+      name: "STATUS",
+      value: process.env.STATUS
+    }
+  ]
 });
 
 // Listen for the "install" event, which indicates the 
