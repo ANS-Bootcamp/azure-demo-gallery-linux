@@ -7,7 +7,6 @@ var multiparty = require('multiparty');
 var uuidv1 = require('uuid/v1');
 var os = require('os');
 var shouldRun = true;
-var httpStatus = 200;
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,9 +20,22 @@ app.get('/host', function(req, res){
   });
 
 app.get('/health.html', function(req, res){
-    res.sendFile(path.join(__dirname, 'views/health.html'));
+    if(process.env.STATUS == 200){
+        res.status(200).send('200 - HEALTHY');
+    }else{
+        res.status(200).send('500 - SERVER ERROR');
+    } 
 });
 
+app.get('/200', function (req, res) {
+    process.env.STATUS = 200;
+    res.status(200).send('200');
+});
+
+app.get('/500', function (req, res) {
+    process.env.STATUS = 500;
+    res.status(200).send('500');
+});
 
 app.get('/data', function (req, res) {
 
@@ -56,7 +68,8 @@ app.get('/data', function (req, res) {
             "cpuload" : os.loadavg(),
             "cpus" : os.cpus(),
             "memtotal" : os.totalmem(),
-            "memfree" : os.freemem()
+            "memfree" : os.freemem(),
+            "health" : process.env.STATUS
         };
 
             if(result.entries.length > 0){
