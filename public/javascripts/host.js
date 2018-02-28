@@ -11,6 +11,7 @@ fetch(url)
   cpuarch.innerText =  "CPU Architecture: " + data.server.cpuarch;
   memtotal.innerText =  "Memory Total: " + data.server.memtotal;
   memfree.innerText =  "Memory Free: " + data.server.memfree;
+  health.innerText = "Health Status: " + data.server.health;
 })
 .catch(function(error) {
   console.log(JSON.stringify(error));
