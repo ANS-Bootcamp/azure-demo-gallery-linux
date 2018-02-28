@@ -20,39 +20,7 @@ app.get('/host', function(req, res){
   });
 
 app.get('/health.html', function(req, res){
-    if(process.env.STATUS == 200){
-        res.status(200).send('200 - HEALTHY');
-    }else{
-        res.status(500).send('500 - SERVER ERROR');
-    } 
-});
-
-app.get('/200', function (req, res) {
-    process.env.STATUS = 200;
-    res.status(200).send('200');
-});
-
-app.get('/500', function (req, res) {
-    process.env.STATUS = 500;
-    res.status(200).send('500');
-});
-
-app.get('/cpu', function(req, res){
-    if(process.env.CPU == 'true'){
-        res.status(200).send('true');
-    }else{
-        res.status(200).send('false');
-    } 
-});
-
-app.get('/cpuhigh', function (req, res) {
-    process.env.CPU = 'true';
-    res.status(200).send('true');
-});
-
-app.get('/cpulow', function (req, res) {
-    process.env.CPU = 'false';
-    res.status(200).send('false');
+        res.status(200).send('HEALTHY');
 });
 
 app.get('/data', function (req, res) {
@@ -86,9 +54,7 @@ app.get('/data', function (req, res) {
             "cpuload" : os.loadavg(),
             "cpus" : os.cpus(),
             "memtotal" : os.totalmem(),
-            "memfree" : os.freemem(),
-            "health" : process.env.STATUS,
-            "cpu" : process.env.CPU
+            "memfree" : os.freemem()
         };
 
             if(result.entries.length > 0){

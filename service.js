@@ -16,14 +16,6 @@ var svc = new Service({
     {
       name: "PORT",
       value: process.env.PORT
-    },
-    {
-      name: "STATUS",
-      value: process.env.STATUS
-    },
-    {
-      name: "CPU",
-      value: process.env.CPU
     }
   ]
 });
