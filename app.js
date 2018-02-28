@@ -47,7 +47,6 @@ app.get('/cpu', function(req, res){
 
 app.get('/cpuhigh', function (req, res) {
     process.env.CPU = 'true';
-    process.env.STATUS = 500;
     res.status(200).send('true');
 });
 
