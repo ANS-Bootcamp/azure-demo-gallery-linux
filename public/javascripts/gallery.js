@@ -15,7 +15,6 @@ fetch(url)
 .then((resp) => resp.json())
 .then(function(data) {
   hostname.innerText =  data.server.hostname;
-  //append(heading2, data.server.name);
   let gallery = data.results;
   return gallery.map(function(gallery) {
     //let div = createNode('div'),
@@ -30,7 +29,6 @@ fetch(url)
       thumb.onclick = function(){
         $('#myModal').modal('show');
         $('#modal-body').html('<img src="' + gallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + gallery.description.value +'</div><div><strong>Confidence: </strong>' + gallery.description.confidence + '%</div><div><strong>Colours: </strong>' + gallery.colours + '</div>' + tagsHtml);
-
     }
     append(panelBody, thumb);
   })
