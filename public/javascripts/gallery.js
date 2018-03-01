@@ -21,7 +21,7 @@ fetch(url)
     //let div = createNode('div'),
     var tagsHtml = "<div> . . . . . </div><div><strong>Tags:</strong></div>";
     gallery.tags.forEach(tag => {
-      tagsHtml = tagsHtml + '<div><strong>'+ tag.name + ' - </strong>' + tag.confidence.toFixed(2) + '% </div>';
+      tagsHtml = tagsHtml + '<div><strong>'+ tag.name + ' - </strong>' + tag.confidence.toFixed(2)*100 + '% </div>';
     });
     let thumb = createNode('img');
       thumb.id = "thumbId";
