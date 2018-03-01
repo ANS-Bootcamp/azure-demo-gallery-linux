@@ -12,8 +12,6 @@ fetch(url)
   cpuload1.innerText =  "CPU Load: " + data.server.cpuload[0];
   memtotal.innerText =  "Memory Total: " + data.server.memtotal;
   memfree.innerText =  "Memory Free: " + data.server.memfree;
-  health.innerText = "Health Status: " + data.server.health;
-  cpu.innerText = "Load CPU: " + data.server.cpu;
 })
 .catch(function(error) {
   console.log(JSON.stringify(error));
