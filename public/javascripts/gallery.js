@@ -14,7 +14,9 @@ const url = '/data';
 fetch(url)
 .then((resp) => resp.json())
 .then(function(data) {
-  hostname.innerText =  data.server.hostname;
+  hostname-images.innerText = data.server.hostname;
+  hostname-face.innerText =  data.server.hostname;
+  hostname-text.innerText =  data.server.hostname;
   let gallery = data.results;
   return gallery.map(function(gallery) {
     //let div = createNode('div'),
