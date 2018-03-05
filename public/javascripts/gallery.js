@@ -45,6 +45,7 @@ function tabImage(){
   .then((resp) => resp.json())
   .then(function(data) {
     const panelBodyImage = document.getElementById('imageGallery');
+    panelBodyImage.innerHTML = "";
     hostnameImage.innerText = data.server.hostname;
     let imageGallery = data.results.image;
     return imageGallery.map(function(imageGallery) {
@@ -75,6 +76,7 @@ function tabFace(){
   .then((resp) => resp.json())
   .then(function(data) {
     const panelBodyFace = document.getElementById('faceGallery');
+    panelBodyImage.innerHTML = "";
     hostnameFace.innerText =  data.server.hostname;
     let faceGallery = data.results.face;
     return faceGallery.map(function(faceGallery) {
@@ -105,6 +107,7 @@ function tabText(){
   .then((resp) => resp.json())
   .then(function(data) {
     const panelBodyText = document.getElementById('textGallery');
+    panelBodyImage.innerHTML = "";
     hostnameText.innerText =  data.server.hostname;
     let textGallery = data.results.text;
     return textGallery.map(function(textGallery) {

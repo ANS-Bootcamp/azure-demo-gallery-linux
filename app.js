@@ -41,7 +41,7 @@ app.get('/data', function (req, res) {
      if(!error) {
         // query was successful
         console.log("Found: " + result.entries.length)
-        var results = [{"face":[]},{"image":[]},{"text":[]}];
+        var results = {"face" : [],"image" : [],"text" : []};
 
         var server = {
             "hostname" : os.hostname(),
@@ -61,7 +61,7 @@ app.get('/data', function (req, res) {
                 result.entries.forEach(entry => {
                     //Image API Data
                     if(JSON.parse(entry.data._).api == 'image'){
-                        var entryData = {
+                        var imageData = {
                             "api" : JSON.parse(entry.data._).api,
                             "imageUri" : JSON.parse(entry.data._).imageUri,
                             "thumbUri" : JSON.parse(entry.data._).thumbUri,
@@ -72,11 +72,11 @@ app.get('/data', function (req, res) {
                             "tags": JSON.parse(entry.data._).tags.value,
                             "colours": JSON.parse(entry.data._).colours.value
                         }
-                        results.image.push(entryData);
+                        results.image.push(imageData);
                     };
                     //Face API Data
                     if(JSON.parse(entry.data._).api == 'face'){
-                        var entryData = {
+                        var faceData = {
                             "api" : JSON.parse(entry.data._).api,
                             "imageUri" : JSON.parse(entry.data._).imageUri,
                             "thumbUri" : JSON.parse(entry.data._).thumbUri,
@@ -87,11 +87,11 @@ app.get('/data', function (req, res) {
                             "tags": JSON.parse(entry.data._).tags.value,
                             "colours": JSON.parse(entry.data._).colours.value
                         }
-                        results.image.push(entryData);
+                        results.face.push(faceData);
                     };
                     // Text API Data
                     if(JSON.parse(entry.data._).api == 'face'){
-                        var entryData = {
+                        var textData = {
                             "api" : JSON.parse(entry.data._).api,
                             "imageUri" : JSON.parse(entry.data._).imageUri,
                             "thumbUri" : JSON.parse(entry.data._).thumbUri,
@@ -102,11 +102,12 @@ app.get('/data', function (req, res) {
                             "tags": JSON.parse(entry.data._).tags.value,
                             "colours": JSON.parse(entry.data._).colours.value
                         }
-                        results.image.push(entryData);
+                        results.text.push(textData);
                     };
                 });
 
             }
+
             var jsonData = {server, results}
             res.send(jsonData);
             }else{
