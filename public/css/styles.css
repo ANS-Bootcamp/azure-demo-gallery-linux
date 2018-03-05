@@ -45,6 +45,21 @@ body {
   border: none;
 }
 
+.refresh-btn-tab {
+  color: #ffffff;
+  background-color: #52347c;
+  border: none;
+}
+
+.refresh-btn-tab:hover,
+.refresh-btn-tab:focus,
+.refresh-btn-tab:active,
+.refresh-btn-tab.active {
+  color: #ffffff;
+  background-color: #52347c;
+  border: none;
+}
+
 h5 {
   padding-top: 5px;
   padding-bottom: 0px;

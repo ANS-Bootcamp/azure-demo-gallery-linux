@@ -11,47 +11,47 @@
   <link href="css/styles.css" rel="stylesheet">
 
 </head>
-<body>
+<body onload="tabImage()">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-body">
             <ul class="nav nav-tabs nav-justified">
-              <li class="active"><a data-toggle="tab" href="#Image" class="glyphicon glyphicon-camera"></a></li>
-              <li><a data-toggle="tab" href="#Face" class="glyphicon glyphicon-user"></a></li>
-              <li><a data-toggle="tab" href="#Text" class="glyphicon glyphicon-pencil"></a></li>
+              <li id="tabImage" class="active"><a data-toggle="tab" href="#Image" class="glyphicon glyphicon-camera"></a></li>
+              <li id="tabFace"><a data-toggle="tab" href="#Face" class="glyphicon glyphicon-user"></a></li>
+              <li id="tabText"><a data-toggle="tab" href="#Text" class="glyphicon glyphicon-pencil"></a></li>
             </ul>
             <br>
             <div class="tab-content">
                 <div id="Image" class="tab-pane fade in active">
                   <h2>Image Gallery</h2>
                   <h4>ans.co.uk</h4>
-                  <div class="panel-body" id="gallery"></div>
+                  <div class="panel-body" id="imageGallery"></div>
                   <button class="btn btn-lg refresh-btn" type="button">Refresh</button>
                   <div>
                     <br>
-                    <a href="/host" id="hostname-images"></a>
+                    <a href="/host" id="hostnameImage"></a>
                   </div>
                 </div>
                 <div id="Face" class="tab-pane fade">
                   <h2>Face Gallery</h2>
                   <h4>ans.co.uk</h4>
-                  <div class="panel-body" id="gallery"></div>
-                  <button class="btn btn-lg refresh-btn" type="button">Refresh</button>
+                  <div class="panel-body" id="faceGallery"></div>
+                  <button class="btn btn-lg refresh-btn-tab" type="button">Refresh</button>
                   <div>
                     <br>
-                    <a href="/host" id="hostname-face"></a>
+                    <a href="/host" id="hostnameFace"></a>
                   </div>
                 </div>
                 <div id="Text" class="tab-pane fade">
                     <h2>Text Gallery</h2>
                     <h4>ans.co.uk</h4>
-                    <div class="panel-body" id="gallery"></div>
-                    <button class="btn btn-lg refresh-btn" type="button">Refresh</button>
+                    <div class="panel-body" id="textGallery"></div>
+                    <button class="btn btn-lg refresh-btn-tab" type="button">Refresh</button>
                     <div>
                       <br>
-                      <a href="/host" id="hostname-text"></a>
+                      <a href="/host" id="hostnameText"></a>
                     </div>
                 </div>
               </div>    
@@ -81,8 +81,6 @@
 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="javascripts/refresh.js"></script>
   <script src="javascripts/gallery.js"></script>
-  <script src="javascripts/modal.js"></script>
 </body>
 </html>

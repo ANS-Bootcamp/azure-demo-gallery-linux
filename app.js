@@ -41,7 +41,7 @@ app.get('/data', function (req, res) {
      if(!error) {
         // query was successful
         console.log("Found: " + result.entries.length)
-        var results = [];
+        var results = [{"face":[]},{"image":[]},{"text":[]}];
 
         var server = {
             "hostname" : os.hostname(),
@@ -59,19 +59,54 @@ app.get('/data', function (req, res) {
 
             if(result.entries.length > 0){
                 result.entries.forEach(entry => {
-                    var entryData = {
-                        "imageUri" : JSON.parse(entry.data._).imageUri,
-                        "thumbUri" : JSON.parse(entry.data._).thumbUri,
-                        "description": {
-                            "value": JSON.parse(entry.data._).description.value,
-                            "confidence": JSON.parse(entry.data._).description.confidence
-                        },
-                        "tags": JSON.parse(entry.data._).tags.value,
-                        "colours": JSON.parse(entry.data._).colours.value
-                    }
-                    results.push(entryData);
-                    });
-                }
+                    //Image API Data
+                    if(JSON.parse(entry.data._).api == 'image'){
+                        var entryData = {
+                            "api" : JSON.parse(entry.data._).api,
+                            "imageUri" : JSON.parse(entry.data._).imageUri,
+                            "thumbUri" : JSON.parse(entry.data._).thumbUri,
+                            "description": {
+                                "value": JSON.parse(entry.data._).description.value,
+                                "confidence": JSON.parse(entry.data._).description.confidence
+                            },
+                            "tags": JSON.parse(entry.data._).tags.value,
+                            "colours": JSON.parse(entry.data._).colours.value
+                        }
+                        results.image.push(entryData);
+                    };
+                    //Face API Data
+                    if(JSON.parse(entry.data._).api == 'face'){
+                        var entryData = {
+                            "api" : JSON.parse(entry.data._).api,
+                            "imageUri" : JSON.parse(entry.data._).imageUri,
+                            "thumbUri" : JSON.parse(entry.data._).thumbUri,
+                            "description": {
+                                "value": JSON.parse(entry.data._).description.value,
+                                "confidence": JSON.parse(entry.data._).description.confidence
+                            },
+                            "tags": JSON.parse(entry.data._).tags.value,
+                            "colours": JSON.parse(entry.data._).colours.value
+                        }
+                        results.image.push(entryData);
+                    };
+                    // Text API Data
+                    if(JSON.parse(entry.data._).api == 'face'){
+                        var entryData = {
+                            "api" : JSON.parse(entry.data._).api,
+                            "imageUri" : JSON.parse(entry.data._).imageUri,
+                            "thumbUri" : JSON.parse(entry.data._).thumbUri,
+                            "description": {
+                                "value": JSON.parse(entry.data._).description.value,
+                                "confidence": JSON.parse(entry.data._).description.confidence
+                            },
+                            "tags": JSON.parse(entry.data._).tags.value,
+                            "colours": JSON.parse(entry.data._).colours.value
+                        }
+                        results.image.push(entryData);
+                    };
+                });
+
+            }
             var jsonData = {server, results}
             res.send(jsonData);
             }else{
