@@ -101,9 +101,15 @@ function tabFace(){
         thumb.src = faceGallery.thumbUri;
         thumb.title = "Age: " + faceGallery.faceAttributes.age + "\r\nGender: " + faceGallery.faceAttributes.gender;
         thumb.onclick = function(){
+          var glasses;
+          if(faceGallery.faceAttributes.glasses){
+            glasses = faceGallery.faceAttributes.glasses;
+          }else{
+            glasses = "not wearing glasses";
+          };
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Face Gallery";
-          $('#modal-body').html('<img src="' + faceGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Gender: </strong>' + faceGallery.faceAttributes.gender +'</div><div><strong>Age: </strong>' + faceGallery.faceAttributes.age + '%</div><div><strong>Smile: </strong>' + faceGallery.faceAttributes.smile + '</div><div><strong>Glasses: </strong>' + faceGallery.faceAttributes.glasses + '</div>' + tagsHtml);
+          $('#modal-body').html('<img src="' + faceGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Gender: </strong>' + faceGallery.faceAttributes.gender +'</div><div><strong>Age: </strong>' + faceGallery.faceAttributes.age + ' years</div><div><strong>Smile: </strong>' + (faceGallery.faceAttributes.smile * 100).toString() + '%</div><div><strong>Glasses: </strong>' + glasses + '</div>');
       }
       append(panelBodyFace, thumb);
     })
