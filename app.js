@@ -95,12 +95,7 @@ app.get('/data', function (req, res) {
                             "api" : JSON.parse(entry.data._).api,
                             "imageUri" : JSON.parse(entry.data._).imageUri,
                             "thumbUri" : JSON.parse(entry.data._).thumbUri,
-                            "description": {
-                                "value": JSON.parse(entry.data._).description.value,
-                                "confidence": JSON.parse(entry.data._).description.confidence
-                            },
-                            "tags": JSON.parse(entry.data._).tags.value,
-                            "colours": JSON.parse(entry.data._).colours.value
+                            "handwriting": JSON.parse(entry.data._).handwriting
                         }
                         results.text.push(textData);
                     };

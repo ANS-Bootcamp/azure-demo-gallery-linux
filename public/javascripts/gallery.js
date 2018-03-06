@@ -129,19 +129,14 @@ function tabText(){
     hostnameText.innerText =  data.server.hostname;
     let textGallery = data.results.text;
     return textGallery.map(function(textGallery) {
-      //let div = createNode('div'),
-      var tagsHtml = "<div> . . . . . </div><div><strong>Tags:</strong></div>";
-      textGallery.tags.forEach(tag => {
-        tagsHtml = tagsHtml + '<div><strong>'+ tag.name + ' - </strong>' + (tag.confidence*100).toFixed(2) + '% </div>';
-      });
       let thumb = createNode('img');
         thumb.id = "thumbId";
         thumb.src = textGallery.thumbUri;
-        thumb.title = textGallery.description.value;
+        thumb.title = textGallery.description.handwriting;
         thumb.onclick = function(){
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Text Gallery";
-          $('#modal-body').html('<img src="' + textGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + textGallery.description.value +'</div><div><strong>Confidence: </strong>' + textGallery.description.confidence + '%</div><div><strong>Colours: </strong>' + textGallery.colours + '</div>' + tagsHtml);
+          $('#modal-body').html('<img src="' + textGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Handwriting: </strong>' + textGallery.description.handwriting +'</div>');
       }
       append(panelBodyText, thumb);
     })
