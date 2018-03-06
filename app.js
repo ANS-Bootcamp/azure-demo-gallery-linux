@@ -90,7 +90,7 @@ app.get('/data', function (req, res) {
                         results.face.push(faceData);
                     };
                     // Text API Data
-                    if(JSON.parse(entry.data._).api == 'face'){
+                    if(JSON.parse(entry.data._).api == 'text'){
                         var textData = {
                             "api" : JSON.parse(entry.data._).api,
                             "imageUri" : JSON.parse(entry.data._).imageUri,

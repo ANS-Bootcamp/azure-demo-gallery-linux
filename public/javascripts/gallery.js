@@ -11,13 +11,17 @@ $("#tabText").on("click", function () {
   tabText();
 });
 
+$('.nav-tabs a').on('shown.bs.tab', function(event){
+  tabRefresh(String(event.target).split("#")[1]);
+});
+
 $('.refresh-btn').on('click', function (){
   location.reload();
 });
 
 $('.refresh-btn-tab').on('click', function (){
-  console.log("Hash: " + location.hash);
-  location.hash.reload();
+  location.reload();
+  tabFace();
 });
 
 $('.home-btn').on('click', function (){
@@ -26,6 +30,16 @@ $('.home-btn').on('click', function (){
 
 $('#myModal').on('hidden.bs.modal', function () {
   location.reload();
+});
+
+$(document).ready(function(){
+	$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+		localStorage.setItem('activeTab', $(e.target).attr('href'));
+	});
+	var activeTab = localStorage.getItem('activeTab');
+	if(activeTab){
+		$('#myTab a[href="' + activeTab + '"]').tab('show');
+	}
 });
 
 
@@ -61,6 +75,7 @@ function tabImage(){
         thumb.title = imageGallery.description.value;
         thumb.onclick = function(){
           $('#myModal').modal('show');
+          document.getElementById("modal-title").innerHTML = "Image Gallery";
           $('#modal-body').html('<img src="' + imageGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + imageGallery.description.value +'</div><div><strong>Confidence: </strong>' + imageGallery.description.confidence + '%</div><div><strong>Colours: </strong>' + imageGallery.colours + '</div>' + tagsHtml);
       }
       append(panelBodyImage, thumb);
@@ -77,7 +92,7 @@ function tabFace(){
   .then((resp) => resp.json())
   .then(function(data) {
     const panelBodyFace = document.getElementById('faceGallery');
-    panelBodyImage.innerHTML = "";
+    panelBodyFace.innerHTML = "";
     hostnameFace.innerText =  data.server.hostname;
     let faceGallery = data.results.face;
     return faceGallery.map(function(faceGallery) {
@@ -92,6 +107,7 @@ function tabFace(){
         thumb.title = faceGallery.description.value;
         thumb.onclick = function(){
           $('#myModal').modal('show');
+          document.getElementById("modal-title").innerHTML = "Face Gallery";
           $('#modal-body').html('<img src="' + faceGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + faceGallery.description.value +'</div><div><strong>Confidence: </strong>' + faceGallery.description.confidence + '%</div><div><strong>Colours: </strong>' + faceGallery.colours + '</div>' + tagsHtml);
       }
       append(panelBodyFace, thumb);
@@ -108,7 +124,7 @@ function tabText(){
   .then((resp) => resp.json())
   .then(function(data) {
     const panelBodyText = document.getElementById('textGallery');
-    panelBodyImage.innerHTML = "";
+    panelBodyText.innerHTML = "";
     hostnameText.innerText =  data.server.hostname;
     let textGallery = data.results.text;
     return textGallery.map(function(textGallery) {
@@ -123,6 +139,7 @@ function tabText(){
         thumb.title = textGallery.description.value;
         thumb.onclick = function(){
           $('#myModal').modal('show');
+          document.getElementById("modal-title").innerHTML = "Text Gallery";
           $('#modal-body').html('<img src="' + textGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + textGallery.description.value +'</div><div><strong>Confidence: </strong>' + textGallery.description.confidence + '%</div><div><strong>Colours: </strong>' + textGallery.colours + '</div>' + tagsHtml);
       }
       append(panelBodyText, thumb);
@@ -153,6 +170,16 @@ function hostInformation(){
   .catch(function(error) {
     console.log(JSON.stringify(error));
   });
+};
+
+function tabRefresh(api){
+  if(api == "Face"){
+    tabFace();
+  }else if(api == "Text"){
+    tabText();
+  }else{
+    tabImage();
+  };
 };
 
 
