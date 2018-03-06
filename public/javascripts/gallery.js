@@ -96,19 +96,14 @@ function tabFace(){
     hostnameFace.innerText =  data.server.hostname;
     let faceGallery = data.results.face;
     return faceGallery.map(function(faceGallery) {
-      //let div = createNode('div'),
-      var tagsHtml = "<div> . . . . . </div><div><strong>Tags:</strong></div>";
-      faceGallery.tags.forEach(tag => {
-        tagsHtml = tagsHtml + '<div><strong>'+ tag.name + ' - </strong>' + (tag.confidence*100).toFixed(2) + '% </div>';
-      });
       let thumb = createNode('img');
         thumb.id = "thumbId";
         thumb.src = faceGallery.thumbUri;
-        thumb.title = faceGallery.description.value;
+        thumb.title = "Age: " + faceGallery.faceAttributes.age + "Gender: " + faceGallery.faceAttributes.gender;
         thumb.onclick = function(){
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Face Gallery";
-          $('#modal-body').html('<img src="' + faceGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Description: </strong>' + faceGallery.description.value +'</div><div><strong>Confidence: </strong>' + faceGallery.description.confidence + '%</div><div><strong>Colours: </strong>' + faceGallery.colours + '</div>' + tagsHtml);
+          $('#modal-body').html('<img src="' + faceGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Gender: </strong>' + faceGallery.faceAttributes.gender +'</div><div><strong>Age: </strong>' + faceGallery.faceAttributes.age + '%</div><div><strong>Smile: </strong>' + faceGallery.faceAttributes.smile + '</div><div><strong>Glasses: </strong>' + faceGallery.faceAttributes.glasses + '</div>' + tagsHtml);
       }
       append(panelBodyFace, thumb);
     })
