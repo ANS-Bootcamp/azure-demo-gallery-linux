@@ -99,7 +99,7 @@ function tabFace(){
       let thumb = createNode('img');
         thumb.id = "thumbId";
         thumb.src = faceGallery.thumbUri;
-        thumb.title = "Age: " + faceGallery.faceAttributes.age + "Gender: " + faceGallery.faceAttributes.gender;
+        thumb.title = "Age: " + faceGallery.faceAttributes.age + "\r\nGender: " + faceGallery.faceAttributes.gender;
         thumb.onclick = function(){
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Face Gallery";
