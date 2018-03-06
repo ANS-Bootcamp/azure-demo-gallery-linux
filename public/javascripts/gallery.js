@@ -16,6 +16,7 @@ $('.refresh-btn').on('click', function (){
 });
 
 $('.refresh-btn-tab').on('click', function (){
+  console.log("Hash: " + location.hash);
   location.hash.reload();
 });
 
