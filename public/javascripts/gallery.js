@@ -132,11 +132,11 @@ function tabText(){
       let thumb = createNode('img');
         thumb.id = "thumbId";
         thumb.src = textGallery.thumbUri;
-        thumb.title = textGallery.description.handwriting;
+        thumb.title = textGallery.handwriting;
         thumb.onclick = function(){
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Text Gallery";
-          $('#modal-body').html('<img src="' + textGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Handwriting: </strong>' + textGallery.description.handwriting +'</div>');
+          $('#modal-body').html('<img src="' + textGallery.imageUri + '" id="imagepreview" style="width: 75%" ><div><strong>Handwriting: </strong>' + textGallery.handwriting +'</div>');
       }
       append(panelBodyText, thumb);
     })
