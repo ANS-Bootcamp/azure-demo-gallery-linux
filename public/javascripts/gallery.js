@@ -21,7 +21,7 @@ $('.refresh-btn').on('click', function (){
 
 $('.refresh-btn-tab').on('click', function (){
   location.reload();
-  tabFace();
+  //tabFace();
 });
 
 $('.home-btn').on('click', function (){
@@ -39,7 +39,8 @@ $(document).ready(function(){
 	var activeTab = localStorage.getItem('activeTab');
 	if(activeTab){
 		$('#myTab a[href="' + activeTab + '"]').tab('show');
-	}
+  }
+  setTimeout(function(){ location.reload(); }, 5000);
 });
 
 
