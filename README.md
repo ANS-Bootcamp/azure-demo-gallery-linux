@@ -1,4 +1,8 @@
-# azure-demo-gallery-linux
-Node.JS code for the gallery application deployed in ANS Azure Bootcamp Day2
+![ANS](Images/ans_logo_small.png)
+# Azure Bootcamp
+For more information on the ANS Azure Bootcamp  visit https://www.ans.co.uk
 
-![Diagram](/Images/ScaleSet–FileViewer.jpg)
+# Node.JS File Viewer Application
+Node.JS code for the file viewer application deployed in ANS Azure Bootcamp.
+
+![Diagram](Images/ScaleSet–FileViewer.jpg)
