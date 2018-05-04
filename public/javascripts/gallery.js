@@ -40,7 +40,7 @@ $(document).ready(function(){
 	if(activeTab){
 		$('#myTab a[href="' + activeTab + '"]').tab('show');
   }
-  setTimeout(function(){ location.reload(); }, 10000);
+  setTimeout(function(){ location.reload(); }, 60000);
 });
 
 
