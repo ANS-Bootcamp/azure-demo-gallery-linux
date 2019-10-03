@@ -84,7 +84,7 @@ app.get('/data', function (req, res) {
                                 "age" : JSON.parse(entry.data._).faceAttributes.age,
                                 "gender" : JSON.parse(entry.data._).faceAttributes.gender,
                                 "smile" : JSON.parse(entry.data._).faceAttributes.smile,
-                                "glassess" : JSON.parse(entry.data._).faceAttributes.glasses
+                                "glasses" : JSON.parse(entry.data._).faceAttributes.glasses
                             }
                         }
                         results.face.push(faceData);

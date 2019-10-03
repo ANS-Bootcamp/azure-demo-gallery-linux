@@ -106,7 +106,7 @@ function tabFace(){
           if(faceGallery.faceAttributes.glasses){
             glasses = faceGallery.faceAttributes.glasses;
           }else{
-            glasses = "not wearing glasses";
+            glasses = "Not wearing glasses";
           };
           $('#myModal').modal('show');
           document.getElementById("modal-title").innerHTML = "Face Gallery";
